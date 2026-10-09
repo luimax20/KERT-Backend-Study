@@ -1,15 +1,30 @@
 // ===== 아래 4개의 함수를 구현해 주세요. =====
 
 function findPost(posts, id) {
+  return posts.find(p => p.id === id) || null;
 }
 
 function searchPosts(posts, keyword) {
+  return posts.filter(p => p.title.includes(keyword));
 }
 
 function addPost(posts, title, author) {
+  const maxId = posts.length > 0 ? Math.max(...posts.map(p => p.id)) : 0;
+  const newPost = {
+    id: maxId + 1,
+    title: title,
+    author: author
+  };
+  posts.push(newPost);
+  return newPost;
 }
 
 function renderPostList(posts) {
+  if (posts.length === 0) {
+    return '<p>글이 없습니다</p>';
+  }
+  const items = posts.map(p => `<li>[${p.id}] ${p.title} (${p.author})</li>`).join('');
+  return `<ul>${items}</ul>`;
 }
 
 // ===== 이 아래는 채점 코드입니다. 수정하지 마세요 =====
@@ -86,3 +101,4 @@ check('renderPostList: 글 2개', () => renderPostList(makePosts().slice(0, 2)),
 check('renderPostList: 빈 배열', () => renderPostList([]), '<p>글이 없습니다</p>');
 
 console.log(`\n${passed} / ${total} 통과`);
+module.exports = { renderPostList, makePosts };
