@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>KERT 게시판</title>
+  <style>body { max-width: 640px; margin: 40px auto; font-family: sans-serif; }</style>
+</head>
+<body>
+  <h1><a href="/posts">KERT 게시판</a></h1>
+  
+  <nav style="margin-bottom: 20px;">
+    <% if (user) { %>
+      <span><strong><%= user.username %></strong> 님</span>
+      <% if (user.role === 'admin') { %>
+        <a href="/admin" style="margin-left: 5px;">관리자</a>
+      <% } %>
+      <form method="POST" action="/logout" style="display: inline;">
+        <button style="margin-left: 5px;">로그아웃</button>
+      </form>
+    <% } else { %>
+      <a href="/login">로그인</a> | 
+      <a href="/signup">회원가입</a>
+    <% } %>
+  </nav>
+  <hr>

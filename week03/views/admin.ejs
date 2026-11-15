@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+<h2>관리자 - 회원 목록</h2>
+
+<ul>
+  <% for (const u of users) { %>
+    <li>[<%= u.id %>] <%= u.username %> (<%= u.role %>)</li>
+  <% } %>
+</ul>
+
+<a href="/posts">글 목록으로</a>
+
+<%- include('partials/footer') %>

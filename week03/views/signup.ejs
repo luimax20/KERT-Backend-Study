@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<h2>회원가입</h2>
+
+<% if (error) { %>
+  <p style="color: red;"><%= error %></p>
+<% } %>
+
+<form method="POST" action="/signup">
+  <p><input name="username" placeholder="아이디" required></p>
+  <p><input type="password" name="password" placeholder="비밀번호" required></p>
+  <button>가입하기</button>
+</form>
+
+<a href="/login">로그인하기</a>
+
+<%- include('partials/footer') %>
