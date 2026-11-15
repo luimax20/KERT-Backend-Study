@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+
+<h2>게시글 목록</h2>
+
+<a href="/posts/new">글쓰기</a>
+
+<ul>
+  <% for (const post of posts) { %>
+    <li>
+      <a href="/posts/<%= post.id %>"><%= post.title %></a> 
+      (작성자: <%= post.username %>)
+    </li>
+  <% } %>
+</ul>
+
+<%- include('partials/footer') %>
